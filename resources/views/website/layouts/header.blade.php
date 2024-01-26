@@ -7,23 +7,12 @@
                     <div class="header__top__inner">
                         <div class="header__top__left">
                             <ul>
-                                <li>USD <span class="arrow_carrot-down"></span>
-                                    <ul>
-                                        <li>EUR</li>
-                                        <li>USD</li>
-                                    </ul>
-                                </li>
-                                <li>ENG <span class="arrow_carrot-down"></span>
-                                    <ul>
-                                        <li>Spanish</li>
-                                        <li>ENG</li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
+                            
+                                <li><a href="{{ route('logout') }}">Đăng nhập</a> <span class="arrow_carrot-down"></span></li>
                             </ul>
                         </div>
                         <div class="header__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                            <a href="{{ route('home') }}"><img src="img/logo.png" alt=""></a>
                         </div>
                         <div class="header__top__right">
                             <div class="header__top__right__links">
@@ -32,7 +21,7 @@
                             </div>
                             <div class="header__top__right__cart">
                                 <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                                <div class="cart__price">Cart: <span>$0.00</span></div>
+                                <div class="cart__price">Giỏ hàng <span>$0.00</span></div>
                             </div>
                         </div>
                     </div>
@@ -46,21 +35,12 @@
             <div class="col-lg-12">
                 <nav class="header__menu mobile-menu">
                     <ul>
-                        <li class="active"><a href="./index.html">Home</a></li>
-                        <li><a href="./about.html">About</a></li>
-                        <li><a href="./shop.html">Shop</a></li>
-                        <li><a href="#">Pages</a>
-                            <ul class="dropdown">
-                                <li><a href="./shop-details.html">Shop Details</a></li>
-                                <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                <li><a href="./checkout.html">Check Out</a></li>
-                                <li><a href="./wisslist.html">Wisslist</a></li>
-                                <li><a href="./Class.html">Class</a></li>
-                                <li><a href="./blog-details.html">Blog Details</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li class="active"><a href="{{ route('home') }}">Trang chủ</a></li>
+                        <li><a href="{{ route('about') }}">Về chúng tôi</a></li>
+                        <li><a href="{{ route('website.product.index') }}">Sản phẩm</a></li>
+                       
+                        <li><a href="{{ route('website.post.index') }}">Bài viết</a></li>
+                        <li><a href="{{ route('website.contact.index') }}">Liên hệ</a></li>
                     </ul>
                 </nav>
             </div>

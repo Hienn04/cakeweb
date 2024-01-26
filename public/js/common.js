@@ -65,3 +65,24 @@ function handleImageUpload(input, image) {
         $(image).attr('src', URL.createObjectURL(input.files[0]));
     }
 }
+
+/**
+ * debounce function
+ * @param {Function} func callback function
+ * @param {Number} wait waiting time
+ * @param {boolean} immediate 
+ */
+function debounce(func, wait, immediate) {
+    var timeout;
+    return function () {
+        var context = this, args = arguments;
+        var later = function () {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+};

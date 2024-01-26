@@ -13,6 +13,8 @@
                         <label for="categoryName" class="form-label">Tên danh mục<span
                                 class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="categoryName" name="name">
+                        
+                   
                     </div>
                     
                 </form>
@@ -31,9 +33,7 @@
      * Submit form cateogry
      */
     function doSubmitCategory() {
-        let formData = new FormData();
-        formData.append('categoryId', $('#categoryId').val());
-        formData.append('name', $('#categoryName').val());
+        let formData = new FormData($('form#form_category')[0]);
         if ($('#categoryId').val() == '') {
             showConfirmDialog('Bạn có chắc chắn muốn tạo danh mục này không?', function() {
                 createCategory(formData);

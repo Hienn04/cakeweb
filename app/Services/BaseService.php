@@ -52,4 +52,39 @@ class BaseService
             throw $e;
         }
     }
+
+    /**
+     * Upload icon files to storage
+     *
+     * @param $icon
+     * @return path icon file
+     */
+    public function uploadIcon($icon, $newFolder = null)
+    {
+        try {
+            $iconName = $icon->getClientOriginalName();
+            $filename = explode('.', $iconName)[0];
+            $extension = $icon->getClientOriginalExtension();
+            $iconName =  Str::slug(time() . "_" . $filename, "_") . "." . $extension;
+            $folder = $newFolder ? 'uploads/' . $newFolder : 'uploads';
+            $path = $icon->storeAs($folder, $iconName, 'public');
+            return $path;
+        } catch (Exception $e) {
+            Log::error($e);
+            throw $e;
+        }
+    }
+
+    public function deleteIcon($path)
+    {
+        try {
+            if (Storage::exists('public/' . $path)) {
+                Storage::delete('public/' . $path);
+            }
+            return true;
+        } catch (Exception $e) {
+            Log::error($e);
+            throw $e;
+        }
+    }
 }

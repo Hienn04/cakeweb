@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Modernize Free</title>
-    <link rel="shortcut icon" type="image/png" href="{{ asset('admin/assets/images/logos/favicon.png') }}" />
+    <title>Tiệm bánh xin chào</title>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('admin/assets/images/logos/logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('admin/assets/css/styles.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/assets/css/common.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/assets/css/lightbox.css') }}" />
@@ -25,6 +25,8 @@
     <script src="{{ asset('admin/assets/libs/simplebar/dist/simplebar.js') }}"></script>
     <script src="{{ asset('js/common.js') }}"></script>
     <script src="{{ asset('js/sweetalert.min.js') }}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+
 </head>
 
 <body>

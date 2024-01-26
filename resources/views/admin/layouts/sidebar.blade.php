@@ -3,7 +3,7 @@
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
             <a href="./index.html" class="text-nowrap logo-img">
-                <img src="{{ asset('admin/assets/images/logos/dark-logo.svg') }}" width="180" alt="" />
+                <img src="{{ asset('admin/assets/images/logos/logo.png') }}" width="180" alt="" />
             </a>
             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                 <i class="ti ti-x fs-8"></i>
@@ -36,9 +36,24 @@
                         <span class="hide-menu">Quản lý danh mục</span>
                     </a>
                 </li>
-                
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('admin.product.index') }}" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-article"></i>
+                        </span>
+                        <span class="hide-menu">Quản lý sản phẩm</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('admin.contact.index') }}" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-article"></i>
+                        </span>
+                        <span class="hide-menu">Quản lý liên hệ</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('admin.post.index') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-typography"></i>
                         </span>
@@ -54,7 +69,7 @@
                         <span>
                             <i class="ti ti-login"></i>
                         </span>
-                        <span class="hide-menu">Login</span>
+                        <span class="hide-menu">Đăng nhập</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
@@ -62,7 +77,7 @@
                         <span>
                             <i class="ti ti-user-plus"></i>
                         </span>
-                        <span class="hide-menu">Register</span>
+                        <span class="hide-menu">Đăng kí</span>
                     </a>
                 </li>
                 <li class="nav-small-cap">

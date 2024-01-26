@@ -4,11 +4,11 @@
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="footer__widget">
-                    <h6>WORKING HOURS</h6>
+                    <h6>Giờ mở cửa hàng</h6>
                     <ul>
-                        <li>Monday - Friday: 08:00 am – 08:30 pm</li>
-                        <li>Saturday: 10:00 am – 16:30 pm</li>
-                        <li>Sunday: 10:00 am – 16:30 pm</li>
+                        <li>Tất cả các ngày trong tuần</li>
+                        <li>Từ thứ 2 - chủ nhật</li>
+                        <li>8h - 21h </li>
                     </ul>
                 </div>
             </div>
@@ -17,24 +17,15 @@
                     <div class="footer__logo">
                         <a href="#"><img src="img/footer-logo.png" alt=""></a>
                     </div>
-                    <p>Lorem ipsum dolor amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore dolore magna aliqua.</p>
-                    <div class="footer__social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-youtube-play"></i></a>
-                    </div>
+                    <p>Bánh ngọt – món quà vô giá từ trái tim đến trái tim.</p>
+                    
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="footer__newslatter">
-                    <h6>Subscribe</h6>
-                    <p>Get latest updates and offers.</p>
-                    <form action="#">
-                        <input type="text" placeholder="Email">
-                        <button type="submit"><i class="fa fa-send-o"></i></button>
-                    </form>
+                    <h6>Mách nhỏ</h6>
+                    <p>Mời bạn một miếng bánh ngon, một tách trà nóng, một ngày an yên.</p>
+                    
                 </div>
             </div>
         </div>
