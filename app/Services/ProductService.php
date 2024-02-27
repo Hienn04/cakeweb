@@ -34,7 +34,7 @@ class ProductService extends BaseService
             if ($status != null && $status != '') {
                 $products->where('products.status', $status);
             }
-            $products = $products-> latest()->paginate($paginate);
+            $products = $products->latest()->paginate($paginate);
             return $products;
         } catch (Exception $e) {
             Log::error($e);

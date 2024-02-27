@@ -8,7 +8,7 @@
                         <a href="#" class="text-nowrap logo-img text-center d-block py-3 w-100">
                             <img src="{{ asset('admin/assets/images/logos/logo.png') }}" width="180" alt="">
                         </a>
-                        <p class="text-center">Tên nhà hàng</p>
+                        <p class="text-center">Tiệm bánh ngọt xin chào</p>
                         <form action="{{ route('register') }}" method="POST">
                             @csrf
                             <div class="mb-3">

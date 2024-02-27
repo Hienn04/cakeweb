@@ -12,6 +12,10 @@ use App\Http\Controllers\Website\ContactController;
 use App\Http\Controllers\Website\ProductController;
 use App\Http\Controllers\Website\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CartController as AdminCartController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Website\CartController;
+use App\Http\Controllers\Website\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,8 +45,11 @@ Route::prefix('products')->group(function () {
 Route::prefix('posts')->group(function () {
     Route::get('/', [PostController::class, 'index'])->name('website.post.index');
     Route::post('/search', [PostController::class, 'search'])->name('website.post.search');
+    Route::get('/details/{id}', [PostController::class, 'details'])->name('website.post.details');
 });
-    
+
+
+
 
 // router danh cho admin
 
@@ -82,6 +89,18 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
         Route::delete('/delete/{id}', [AdminContactController::class, 'delete'])->name('admin.contact.delete');
     });
 
+    Route::prefix('orders')->group(function () {
+        Route::get('/', [AdminOrderController::class, 'index'])->name('admin.order.index');
+        Route::post('/search', [AdminOrderController::class, 'search'])->name('admin.order.search');
+        Route::post('/updateStatus', [AdminOrderController::class, 'updateStatus'])->name('admin.order.updateStatus');
+        Route::delete('/delete/{id}', [AdminOrderController::class, 'delete'])->name('admin.order.delete');
+    });
+
+    Route::prefix('orders/details')->group(function () {
+        Route::get('/{id}', [AdminOrderController::class, 'details'])->name('admin.order.details');
+        Route::post('/search', [AdminOrderController::class, 'searchDetails'])->name('admin.order.searchDetails');
+    });
+
 });
 
 // router danh cho user
@@ -89,6 +108,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::prefix('cart')->group(function () {
+        Route::get('/', [CartController::class, 'index'])->name('cart.index');
+        Route::post('/', [CartController::class, 'search'])->name('cart.search');
+        Route::post('/searchLimit', [CartController::class, 'searchLimit'])->name('cart.searchLimit');
+        Route::post('/add_to_cart', [CartController::class, 'addToCart'])->name('cart.add');
+        Route::post('/update_cart', [CartController::class, 'updateCart'])->name('cart.update');
+        Route::delete('/remove', [CartController::class, 'removeProduct'])->name('cart.remove');
+    });
+
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+    Route::post('/placeOrder', [CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');
 });
 
 require __DIR__ . '/auth.php';

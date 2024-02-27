@@ -23,7 +23,7 @@
 <!-- Shop Section Begin -->
 <section class="shop spad">
     <div class="container">
-        <div class="shop__option">
+        {{-- <div class="shop__option">
             <div class="row">
                 <div class="col-lg-7 col-md-7">
                     <div class="shop__option__search">
@@ -34,45 +34,18 @@
                                 <option value="">Cup Cake</option>
                                 <option value="">Biscuit</option>
                             </select>
-                            <input type="text" placeholder="Search">
+                            <input type="text" placeholder="Tìm kiếm">
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-5 col-md-5">
-                    <div class="shop__option__right">
-                        <select>
-                            <option value="">Default sorting</option>
-                            <option value="">A to Z</option>
-                            <option value="">1 - 8</option>
-                            <option value="">Name</option>
-                        </select>
-                        <a href="#"><i class="fa fa-list"></i></a>
-                        <a href="#"><i class="fa fa-reorder"></i></a>
-                    </div>
-                </div>
+                
             </div>
-        </div>
-        <div class="row" id="listProducts">
+        </div> --}}
+        <div id="listProducts">
            
         </div>
-        <div class="shop__last__option">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="shop__pagination">
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#"><span class="arrow_carrot-right"></span></a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="shop__last__text">
-                        <p>Showing 1-9 of 10 results</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
     </div>
 </section>
 <!-- Shop Section End -->
@@ -102,17 +75,57 @@
             });
         }
 
+        function addToCart(productId, quantity, btn) {
+            $.ajax({
+                    type: "POST",
+                    url: "{{ route('cart.add') }}",
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    data: {
+                        productId: productId,
+                        quantity: quantity,
+                    },
+                })
+                .done(function(res) {
+                    console.log(res);
+                    // const quantityAvailable = res.data.original.quantityAvailable;
+                    const data = res.data.original;
+                    if (data.success) {
+                        notiSuccess(data.success, "center");
+                        // $("#product-available").text(quantityAvailable);
+                        getTotalProductInCart();
+                    } else if (data.error) {
+                        notiError(data.error);
+                    }
+                })
+                .fail(function(xhr) {
+                    if (xhr.status === 401) {
+                        window.location.href = "/login";
+                    } else if (xhr.status === 400 && xhr.responseJSON.errors) {
+                        const errorMessages = xhr.responseJSON.errors;
+                        for (let fieldName in errorMessages) {
+                            notiError(errorMessages[fieldName][0]);
+                        }
+                    } else {
+                        notiError();
+                    }
+                })
+                .always(function() {
+                    btn.prop("disabled", false);
+                });
+        }
+
         $(document).ready(function() {
             searchProductMenu();
 
-            // tìm kiếm sản phẩm theo danh mục
-            $('.category-tab').click(function() {
-                let categoryId = $(this).data('id');
-                $('.category-tab').removeClass('active');
-                $(this).addClass('active');
-                searchProductMenu(page = 1, categoryId = categoryId ?? null);
-
-            })
+            
+            $(document).on('click', '.btn-add-cart', function() {
+                $(this).prop('disabled', true);
+                const productId = $(this).data('product-id');
+                addToCart(productId, 1, $(this));
+                searchProductMenu();
+            });
         })
     </script>
 @endsection

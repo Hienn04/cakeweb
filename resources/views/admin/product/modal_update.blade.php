@@ -167,12 +167,12 @@
             const data = $(e.relatedTarget).data('item');
             let imagePreviewHtml = '';
             if (data) {
-                imagePreviewHtml = `<img src="/storage/${data.image}" id="imageProductPreview" />`
+                imagePreviewHtml = `<img src="/storage/${data.image}" id="imageProductPreview" />`;
+                 console.log(imagePreviewHtml);
                 $("#productId").val(data.id);
                 $("#productName").val(data.name);
                 $("#productPrice").val(data.price);
                 $("#productQuantity").val(data.quantity);
-                $("#productImage").val(data.image);
                 $("#productDescription").val(data.description);
                 $('#imageProductPreviewContainer').html(imagePreviewHtml);
                 $('#cbStatusProduct').prop('checked', data.status == 1);

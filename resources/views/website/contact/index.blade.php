@@ -47,15 +47,15 @@
                     <form id="form_contact">
                         <div class="row">
                             <div class="col-lg-6 form-group">
-                                <input name="name" type="text" class="form-control" placeholder="Your Name"
+                                <input name="name" type="text" class="form-control" placeholder="Tên của bạn"
                             >
                             </div>
                             <div class="col-lg-6 form-group">
-                                <input name="email" type="email" class="form-control" placeholder="Your Email"
+                                <input name="email" type="email" class="form-control" placeholder="Email"
                                 >
                             </div>
                             <div class="col-lg-12 form-group">
-                                <textarea name="message" placeholder="Message"></textarea>
+                                <textarea name="message" placeholder="Lời nhắn"></textarea>
                                 <button id="btnSubmitContact" type="submit" class="site-btn py-3 px-5">Gửi</button>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <div class="map">
+        {{-- <div class="map">
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-4 col-md-7">
@@ -81,7 +81,7 @@
             <div class="map__iframe">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d10784.188505644011!2d19.053119335158936!3d47.48899529453826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1543907528304" height="300" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
-        </div>
+        </div> --}}
     </div>
 </section>
 @endsection

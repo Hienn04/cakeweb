@@ -46,7 +46,6 @@ class PostController extends Controller
     public function details($id)
     {
         $data = $this->postService->getPostById($id);
-        $postPopular = $this->postService->getPostPopular($id);
-        return view('website.post.details', ['post' => $data, 'postPopular' => $postPopular]);
+        return view('website.post.details', ['post' => $data]);
     }
 }

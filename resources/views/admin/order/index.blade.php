@@ -1,69 +1,66 @@
 @extends('admin.layouts.app')
 @section('content')
-    <div class="category-container container">
+    <div class="order-container container">
         <div class="d-flex justify-content-between">
-            <h2>Danh sách danh mục món ăn </h2>
+            <h2>Danh sách đặt hàng</h2>
             <div class="form-search d-flex algin-items-center gap-2">
-                <input type="text" id="txtSearchCategory" placeholder="nhập để tìm kiếm..." class="form-control"
-                    name="nameCategory">
-                <button class="btn btn-primary" onclick="searchCategory()"><i
+                <input type="text" id="txtSearchOrder" placeholder="Tìm kiếm ở đây..." class="form-control"
+                    name="searchOrder">
+                <button class="btn btn-primary" onclick="searchOrderAdmin()"><i
                         class="fa-solid fa-magnifying-glass"></i></button>
             </div>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateCategoryModal"
-                data-bs-backdrop="static" data-bs-keyboard="false"><i class="fa-solid fa-plus me-2"></i>Tạo mới danh
-                mục</button>
         </div>
         <div class="mt-3">
-            <div id="category_table">
+            <div id="order_table">
                 <div class="d-flex justify-content-center mt-5">
                     <img src="{{ asset('admin/assets/images/loading.svg') }}" alt="">
                 </div>
             </div>
         </div>
     </div>
-    @include('admin.category.modal_update')
+    @include('admin.order.modal_update_status')
 @endsection
 @section('web-script')
     <script>
-        const urlDeleteCategory = "{{ route('admin.category.create', ['id' => ':id']) }}";
+        const urlDeleteOrder = "{{ route('admin.order.delete', ['id' => ':id']) }}";
 
         /**
-         * tải danh sách bảng categories
+         * Hàm tải danh sách đơn hàng
          */
-        function searchCategory(page = 1) {
+        function searchOrderAdmin(page = 1) {
             $.ajax({
-                url: '<?= route('admin.category.search') ?>?page=' + page,
+                url: '<?= route('admin.order.search') ?>?page=' + page,
                 type: "POST",
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data: {
-                    searchName: $('#txtSearchCategory').val(),
+                    searchName: $('#txtSearchOrder').val(),
                 }
             }).done(function(data) {
-                $('#category_table').html(data);
+                $('#order_table').html(data);
             }).fail(function() {
                 notiError();
             });
         }
 
         $(document).ready(function() {
-            searchCategory();
+            searchOrderAdmin();
 
-            // Xóa danh mục
-            $(document).on('click', '#btnDeleteCate', function() {
-                let categoryId = $(this).data('id');
-                showConfirmDialog('Bạn có chắc chắn muốn xóa danh mục này?', function() {
+            // Xóa dơn đặt hàng
+            $(document).on('click', '#btnDeleteOrder', function() {
+                let orderId = $(this).data('id');
+                showConfirmDialog('Bạn có chắc chắn muốn xóa đơn hàng này không?', function() {
                     $.ajax({
-                        url: urlDeleteCategory.replace(':id', categoryId),
+                        url: urlDeleteOrder.replace(':id', orderId),
                         type: "DELETE",
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
                     }).done(function(res) {
                         if (res == 'ok') {
-                            notiSuccess("Đã xóa danh mục thành công");
-                            searchCategory();
+                            notiSuccess("Xóa đơn hàng thành công");
+                            searchOrderAdmin();
                         }
                     }).fail(function(xhr) {
                         if (xhr.status === 400 && xhr.responseJSON.errors) {
@@ -77,6 +74,7 @@
                     })
                 })
             })
+
         });
     </script>
 @endsection

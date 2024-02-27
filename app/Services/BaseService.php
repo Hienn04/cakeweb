@@ -87,4 +87,18 @@ class BaseService
             throw $e;
         }
     }
+    /**
+     * Hàm tạo 1 đoạn chữ số ngẫu nhiên
+     */
+    public function generateRandomCode($length = 10)
+    {
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $code = '';
+
+        for ($i = 0; $i < $length; $i++) {
+            $code .= $characters[rand(0, strlen($characters) - 1)];
+        }
+
+        return $code;
+    }
 }
