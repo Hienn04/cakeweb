@@ -20,6 +20,7 @@ class ProductController extends Controller
 
     public function index()
     {
+        
         $categories = Category::all();
         return view('admin.product.index',compact('categories'));
     }
@@ -27,6 +28,7 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $data = $this->productService->searchProduct($request->searchName);
+        // dump($data);
         return view('admin.product.table',compact('data'));
     }
     public function create(StoreProductRequest $request)

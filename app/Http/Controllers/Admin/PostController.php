@@ -49,6 +49,7 @@ class PostController extends Controller
     public function create(StorePostRequest $request)
     {
         $this->postService->createPost($request);
+        
         return response()->json('ok');
     }
 

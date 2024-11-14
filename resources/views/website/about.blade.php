@@ -23,14 +23,7 @@
 <!-- About Section Begin -->
 <section class="about spad">
     <div class="container">
-        {{-- <div class="row">
-            <div class="col-lg-12">
-                <div class="about__video set-bg" data-setbg="img/about-video.jpg">
-                    <a href="https://youtu.be/Dbl9rfJYocU"
-                    class="play-btn video-popup"><i class="fa fa-play"></i></a>
-                </div>
-            </div>
-        </div> --}}
+       
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <div class="about__text">
@@ -67,8 +60,8 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="section-title">
-                    <span>Testimonial</span>
-                    <h2>Our client say</h2>
+                    
+                    <h2>Những bí mật nhỏ của tiệm </h2>
                 </div>
             </div>
         </div>
@@ -77,33 +70,31 @@
                 <div class="col-lg-6">
                     <div class="testimonial__item">
                         <div class="testimonial__author">
-                            <div class="testimonial__author__pic">
+                            {{-- <div class="testimonial__author__pic">
                                 <img src="img/testimonial/ta-1.jpg" alt="">
-                            </div>
+                            </div> --}}
                             <div class="testimonial__author__text">
-                                <h5>Kerry D.Silva</h5>
-                                <span>New york</span>
+                                <h5>Tầm nhìn</h5>
+                                <span>Cake</span>
                             </div>
                         </div>
                        
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                        ut labore et dolore magna aliqua viverra lacus vel facilisis.</p>
+                        <p>Trở thành thương hiệu hàng đầu về cung cấp bánh tươi chất lượng cao tại Việt Nam</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="testimonial__item">
                         <div class="testimonial__author">
-                            <div class="testimonial__author__pic">
+                            {{-- <div class="testimonial__author__pic">
                                 <img src="img/testimonial/ta-2.jpg" alt="">
-                            </div>
+                            </div> --}}
                             <div class="testimonial__author__text">
-                                <h5>Kerry D.Silva</h5>
-                                <span>New york</span>
+                                <h5>Sứ mệnh</h5>
+                                <span>Cake</span>
                             </div>
                         </div>
                         
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                        ut labore et dolore magna aliqua viverra lacus vel facilisis.</p>
+                        <p>Mang đến các sản phẩm bánh tươi chất lượng, dịch vụ khách hàng vượt trội và văn hóa Bakery riêng biệt.​</p>
                     </div>
                 </div>
                 

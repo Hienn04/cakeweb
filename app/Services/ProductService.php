@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Log;
 
 class ProductService extends BaseService
 {
+    public function find($id){
+        $product = Product::where('id',$id)->first();
+        return $product;
+
+    }
     public function getLimitProducts()
     {
         try {
@@ -18,6 +23,7 @@ class ProductService extends BaseService
             return response()->json($e, 500);
         }
     }
+    
 
     public function searchProduct($searchName = null, $categoryId = null, $paginate = 2, $status = null)
     {
@@ -54,7 +60,8 @@ class ProductService extends BaseService
                 'image' => $uploadImage,
                 'status' => $request->statusProduct,
                 'description' => $request->description,
-                'quantity' =>$request->quantity
+                'quantity' =>$request->quantity,
+                'ori_price' =>  $request->ori_price,
             ];
 
             Product::create($product);
@@ -81,7 +88,8 @@ class ProductService extends BaseService
                 'description' => $request->description,
                 'image' => $uploadImage ?? $product->image,
                 'status' => $request->statusProduct,
-                'quantity' =>$request->quantity
+                'quantity' =>$request->quantity,
+                'ori_price' => $request->ori_price,
             
             ];
 

@@ -2,7 +2,7 @@
 @section('content')
     <div class="category-container container">
         <div class="d-flex justify-content-between">
-            <h2>Danh sách danh mục món ăn </h2>
+            <h2>Thể loại sách </h2>
             <div class="form-search d-flex algin-items-center gap-2">
                 <input type="text" id="txtSearchCategory" placeholder="nhập để tìm kiếm..." class="form-control"
                     name="nameCategory">

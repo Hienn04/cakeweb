@@ -11,14 +11,18 @@
                     <input type="hidden" name="productId" id="productId">
                     <div class="row mb-4">
                         <div class="col-md-8">
-                            <label for="productName" class="form-label">Tên sản phẩm<span
-                                    class="text-danger">*</span></label>
+                            <label for="productName" class="form-label">Tên sản phẩm<span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="productName" name="name">
                         </div>
-                        <div class="col-md-4">
-                            <label for="productPrice" class="form-label">Giá<span class="text-danger">*</span></label>
+                        <div class="col-md-2">
+                            <label for="productOriPrice" class="form-label"> Giá gốc<span class="text-danger">*</span></label>  
+                            <input type="number" class="form-control" id="productOriPrice" name="ori_price">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="productPrice" class="form-label">Giá bán<span class="text-danger">*</span></label>
                             <input type="number" class="form-control" id="productPrice" name="price">
                         </div>
+
                     </div>
                     <div class="mb-4">
                         <label for="productImage" class="form-label">Ảnh</label>
@@ -31,22 +35,19 @@
                             <label for="category" class="form-label">Danh mục<span class="text-danger">*</span></label>
                             <select name="category_id" class="form-select" id="category">
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                             </select>
                         </div>
+
                         <div class="col-md-4">
                             <label for="productQuantity" class="form-label">Số lượng<span class="text-danger">*</span></label>
                             <input type="number" value="1" class="form-control" id="productQuantity" name="quantity">
                         </div>
                     </div>
-                    <div class="row mb-4">
-                        <div class="col-md-12">
-                            <label for="productDescription" class="form-label">Description</label>
-                            <textarea class="form-control" id="productDescription" name="description"></textarea>
-                        </div>
-                        
-                    </div>
+                    
+
+
                     <div class="mb-4 d-flex align-items-center">
                         <label class="col-md-3 control-label">
                             <b>Trạng thái<span class="text-danger">*</span></b>
@@ -67,13 +68,15 @@
     </div>
 </div>
 <style>
-    #updateProductModal{
-        --bs-modal-width:1000px !important;
+    #updateProductModal {
+        --bs-modal-width: 1000px !important;
     }
-    #imageProductPreview{
+
+    #imageProductPreview {
         width: 500px !important;
         height: 300px !important;
     }
+
 </style>
 <script>
     /**
@@ -82,12 +85,14 @@
     function doSubmitProduct() {
         let formData = new FormData($('form#form_product')[0]);
         formData.append('statusProduct', $('#cbStatusProduct').is(':checked') ? 1 : 0);
+        
+
         if ($('#productId').val() == '') {
-            showConfirmDialog('Bạn có chắc chắn muốn tạo món ăn này không?', function() {
+            showConfirmDialog('Bạn có chắc chắn muốn tạo sản phẩm này không?', function() {
                 createProduct(formData);
             });
         } else {
-            showConfirmDialog('Bạn có chắc chắn muốn cập nhật món ăn này không?', function() {
+            showConfirmDialog('Bạn có chắc chắn muốn cập nhật sản phẩm này không?', function() {
                 updateProduct(formData);
             });
         }
@@ -98,18 +103,18 @@
      */
     function createProduct(data) {
         $.ajax({
-            type: "POST",
-            url: "{{ route('admin.product.create') }}",
-            contentType: false,
-            processData: false,
-            headers: {
+            type: "POST"
+            , url: "{{ route('admin.product.create') }}"
+            , contentType: false
+            , processData: false
+            , headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data: data,
+            }
+            , data: data,
 
         }).done(function(res) {
             if (res == 'ok') {
-                notiSuccess('Món ăn được tạo thành công');
+                notiSuccess('Sách được tạo thành công');
                 searchProduct();
                 $('#updateProductModal').modal('toggle');
             }
@@ -131,17 +136,17 @@
      */
     function updateProduct(data) {
         $.ajax({
-            type: "POST",
-            url: "{{ route('admin.product.update') }}",
-            contentType: false,
-            processData: false,
-            headers: {
+            type: "POST"
+            , url: "{{ route('admin.product.update') }}"
+            , contentType: false
+            , processData: false
+            , headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data: data,
-        }).done(function(res) {
+            }
+            , data: data
+        , }).done(function(res) {
             if (res == 'ok') {
-                notiSuccess('Món ăn được cập nhật thành công');
+                notiSuccess('Sách được cập nhật thành công');
                 searchProduct();
                 $('#updateProductModal').modal('toggle');
             }
@@ -168,10 +173,11 @@
             let imagePreviewHtml = '';
             if (data) {
                 imagePreviewHtml = `<img src="/storage/${data.image}" id="imageProductPreview" />`;
-                 console.log(imagePreviewHtml);
+                console.log(imagePreviewHtml);
                 $("#productId").val(data.id);
                 $("#productName").val(data.name);
                 $("#productPrice").val(data.price);
+                $("#productOriPrice").val(data.ori_price);
                 $("#productQuantity").val(data.quantity);
                 $("#productDescription").val(data.description);
                 $('#imageProductPreviewContainer').html(imagePreviewHtml);
@@ -183,13 +189,15 @@
                 $("#productId").val("");
                 $("#productName").val('');
                 $("#productPrice").val('');
+                $("#productOriPrice").val('');
                 $("#productQuantity").val('1');
                 $("#productImage").val('');
                 $("#productDescription").val('');
                 $('#imageProductPreviewContainer').html(imagePreviewHtml);
                 $('#cbStatusProduct').prop('checked', true);
-                $('#titleProductModal').html('Tạo mới món ăn');
+                $('#titleProductModal').html('Tạo mới sách');
             }
         });
     })
+
 </script>

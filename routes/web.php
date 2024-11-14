@@ -1,21 +1,22 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\CKEditorController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\ProductController as AdminProductController;
-use App\Http\Controllers\Admin\PostController as AdminPostController;
-use App\Http\Controllers\Admin\ContactController as AdminContactController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CKEditorController;
+use App\Http\Controllers\Website\CartController;
 use App\Http\Controllers\Website\HomeController;
+use App\Http\Controllers\Website\PostController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Website\ContactController;
 use App\Http\Controllers\Website\ProductController;
-use App\Http\Controllers\Website\PostController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\CartController as AdminCartController;
-use App\Http\Controllers\Admin\OrderController as AdminOrderController;
-use App\Http\Controllers\Website\CartController;
 use App\Http\Controllers\Website\CheckoutController;
+use App\Http\Controllers\Admin\StatisticalController;
+use App\Http\Controllers\Admin\CartController as AdminCartController;
+use App\Http\Controllers\Admin\PostController as AdminPostController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Admin\ContactController as AdminContactController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +41,12 @@ Route::prefix('contacts')->group(function () {
 Route::prefix('products')->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('website.product.index');
     Route::post('/search', [ProductController::class, 'search'])->name('website.product.search');
+    Route::get('/listCate/{id}', [ProductController::class, 'listCate'])->name('website.product.productCate');
+    Route::get('/details/{id}', [ProductController::class, 'details'])->name('website.product.detail');
+
 });
+
+
 
 Route::prefix('posts')->group(function () {
     Route::get('/', [PostController::class, 'index'])->name('website.post.index');
@@ -51,10 +57,12 @@ Route::prefix('posts')->group(function () {
 
 
 
-// router danh cho admin
+// Route For Admin
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/statistical', [StatisticalController::class, 'index'])->name('admin.statistical');
+    Route::get('/accountant', [StatisticalController::class, 'getProfit'])->name('admin.accountant');
 
     Route::prefix('category')->group(function () {
         Route::get('/', [CategoryController::class, 'index'])->name('admin.category.index');
@@ -103,7 +111,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 
 });
 
-// router danh cho user
+// Route For User
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -115,6 +123,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/searchLimit', [CartController::class, 'searchLimit'])->name('cart.searchLimit');
         Route::post('/add_to_cart', [CartController::class, 'addToCart'])->name('cart.add');
         Route::post('/update_cart', [CartController::class, 'updateCart'])->name('cart.update');
+        Route::post('/getTotalProductInCart', [CartController::class, 'getTotalProductInCart'])->name('cart.getTotalProductInCart');
         Route::delete('/remove', [CartController::class, 'removeProduct'])->name('cart.remove');
     });
 

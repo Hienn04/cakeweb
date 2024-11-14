@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Tiệm bánh xin chào</title>
-    <link rel="shortcut icon" type="image/png" href="{{ asset('admin/assets/images/logos/logo.png') }}" />
+    <title>BookShop</title>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('img/icon/hienbook.png') }}" />
     <link rel="stylesheet" href="{{ asset('admin/assets/css/styles.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/assets/css/common.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/assets/css/lightbox.css') }}" />

@@ -5,7 +5,7 @@ $link_limit = 7; // maximum number buttons
 @if ($paginator->lastPage() > 1)
     <ul class="pagination">
         <li class="page-item {{ $paginator->currentPage() == 1 ? ' disabled' : '' }}">
-            <a class="page-link" href="javascript:searchProductMenu(1)">Trước</a>
+            <a class="page-link" href="javascript:searchProductMenu(1)" style="">Trước</a>
         </li>
         @for ($i = 1; $i <= $paginator->lastPage(); $i++)
             <?php
@@ -21,7 +21,7 @@ $link_limit = 7; // maximum number buttons
             ?>
             @if ($from < $i && $i < $to)
                 <li class="page-item {{ $paginator->currentPage() == $i ? ' active' : '' }}">
-                    <a class="page-link" href="javascript:searchProductMenu({{ $i }})">{{ $i }}</a>
+                    <a style="" class="page-link" href="javascript:searchProductMenu({{ $i }})">{{ $i }}</a>
                 </li>
             @endif
         @endfor

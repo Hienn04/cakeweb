@@ -28,6 +28,7 @@ class UpdateProductRequest extends FormRequest
             'name' => 'required',
             'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:20000',
             'price' => 'required',
+            'ori_price' => 'required',
             'quantity' => 'required'
 
         ];
@@ -38,6 +39,7 @@ class UpdateProductRequest extends FormRequest
         return [
             'name.required' => 'Tên sản phẩm là bắt buộc',
             'price.required' => 'Giá sản phẩm là bắt buộc',
+            'ori_price.required' => 'Giá gốc sản phẩm là bắt buộc',
             'quantity.required' => 'Số lượng sản phẩm là bắt buộc',
 
             'image.mines' => 'Định dạng hình ảnh phải là jpeg, jpg, png, gif',

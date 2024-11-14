@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Website;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\CartRequest;
-use App\Services\CartService;
+use App\Models\Cart;
+use App\Models\CartItem;
 use Illuminate\Http\Request;
+use App\Services\CartService;
+use App\Http\Requests\CartRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -25,7 +28,12 @@ class CartController extends Controller
      * @return view cart page
      */
     public function index()
-    {
+    {   
+        $user  = Auth::user();
+        
+        $user_Cart = Cart::where('user_id', $user->id)->first();
+        
+        
         return view('website.cart.index');
     }
 
@@ -37,6 +45,7 @@ class CartController extends Controller
     public function search()
     {
         $data = $this->cartService->showCart();
+       
         return view('website.cart.table', [
             'cartItems' => $data['cartItems'],
             'totalCarts' => $data['totalCarts'],
@@ -78,6 +87,12 @@ class CartController extends Controller
     public function updateCart(CartRequest $request)
     {
         $data = $this->cartService->updateCart($request);
+        return response()->json(['data' => $data]);
+    }
+
+    public function getTotalProductInCart()
+    {
+        $data = $this->cartService->getTotalProductInCart();
         return response()->json(['data' => $data]);
     }
 }

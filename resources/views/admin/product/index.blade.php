@@ -15,13 +15,24 @@
         <div class="mt-3">
             <div id="product_table">
                 <div class="d-flex justify-content-center mt-5">
-                    <img src="{{ asset('admin/assets/images/logos/logo.png') }}" alt="">
+                    <img src="{{ asset('admin/assets/images/loading.svg') }}" alt="">
                 </div>
             </div>
         </div>
     </div>
     @include('admin.product.modal_update')
 @endsection
+
+
+
+
+
+
+
+
+
+
+
 @section('web-script')
     <script>
         const urlDeleteProduct = "{{ route('admin.product.delete', ['id' => ':id']) }}";

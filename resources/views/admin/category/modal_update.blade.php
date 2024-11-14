@@ -10,13 +10,18 @@
                 <form id="form_category">
                     <input type="hidden" name="categoryId" id="categoryId">
                     <div class="mb-4">
-                        <label for="categoryName" class="form-label">Tên danh mục<span
-                                class="text-danger">*</span></label>
+                        <label for="categoryName" class="form-label">Tên danh mục<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="categoryName" name="name">
-                        
-                   
+
+
                     </div>
-                    
+                    <div class="">
+                        <label for="cateImage" class="form-label">Ảnh</label>
+                        <input type="file" class="form-control" id="cateImage" name="image">
+                    </div>
+                    <div class="w-100 d-flex justify-content-center my-2" id="imageCatePreviewContainer">
+                    </div>
+
                 </form>
             </div>
             <div class="modal-footer">
@@ -50,14 +55,14 @@
      */
     function createCategory(data) {
         $.ajax({
-            type: "POST",
-            url: "{{ route('admin.category.create') }}",
-            contentType: false,
-            processData: false,
-            headers: {
+            type: "POST"
+            , url: "{{ route('admin.category.create') }}"
+            , contentType: false
+            , processData: false
+            , headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data: data,
+            }
+            , data: data,
 
         }).done(function(res) {
             if (res == 'ok') {
@@ -83,15 +88,15 @@
      */
     function updateCategory(data) {
         $.ajax({
-            type: "POST",
-            url: "{{ route('admin.category.update') }}",
-            contentType: false,
-            processData: false,
-            headers: {
+            type: "POST"
+            , url: "{{ route('admin.category.update') }}"
+            , contentType: false
+            , processData: false
+            , headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data: data,
-        }).done(function(res) {
+            }
+            , data: data
+        , }).done(function(res) {
             if (res == 'ok') {
                 notiSuccess('Danh mục được cập nhật thành công');
                 searchCategory();
@@ -114,15 +119,33 @@
         // sự kiện hiển thị modal 
         $('#updateCategoryModal').on('shown.bs.modal', function(e) {
             var data = $(e.relatedTarget).data('item');
+            let imagePreviewHtml = '';
             if (data) {
+                imagePreviewHtml = `<img src="/storage/${data.image}" id="imageCatePreview" />`
                 $("#categoryId").val(data.id);
                 $("#categoryName").val(data.name);
+                $('#imageCatePreviewContainer').html(imagePreviewHtml);
                 $('#titleCategoryModal').html('Cập nhật danh mục');
             } else {
+                 imagePreviewHtml =
+                    `<img src="{{ asset('images/default-img.png') }}" id="imageCatePreview" />`;
                 $("#categoryId").val("");
                 $("#categoryName").val("");
+                $('#imageCatePreviewContainer').html(imagePreviewHtml);
                 $('#titleCategoryModal').html('Tạo mới danh mục');
             }
         });
     })
+    $(document).ready(function() {
+        // Add/change image for post
+        $('#cateImage').on('change', function() {
+            handleImageUpload(this, $('#imageCatePreview'));
+        });
+        // Click to submit the post
+        $('#btnSaveCategory').click(function(e) {
+            e.preventDefault();
+            doSubmitCategory($(this));
+        });
+    })
+
 </script>

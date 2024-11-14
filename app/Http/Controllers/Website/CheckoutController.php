@@ -19,21 +19,18 @@ class CheckoutController extends Controller
         $this->orderService = $orderService;
     }
 
-    /**
-     * Hiển thị trang thanh toán
-     */
+    
     public function index()
     {
         $data = $this->cartService->showCartCheckout();
+        // return $data;
         return view('website.checkout.index', [
             'cartItemsInCheckout' => $data['cartItemsInCheckout'],
             'totalCarts' => $data['totalCarts'],
         ]);
     }
 
-    /**
-     * Hàm lưu đơn hàng
-     */
+    
 
     public function placeOrder(OrderRequest $request)
     {

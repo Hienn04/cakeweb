@@ -308,7 +308,7 @@ ol {
   Header
 -----------------------*/
 .header {
-  background: #f08632;
+  background: #ffffff;
 }
 
 .header__top {
@@ -461,9 +461,7 @@ ol {
 .header__menu ul li.active a {
   background: #111111;
 }
-.header__menu ul li:hover a {
-  background: #111111;
-}
+
 .header__menu ul li:hover .dropdown {
   top: 62px;
   opacity: 1;
@@ -503,7 +501,7 @@ ol {
 }
 .header__menu ul li a {
   font-size: 16px;
-  color: #ffffff;
+  color: #000;
   display: block;
   font-weight: 600;
   padding: 20px 35px 18px;

@@ -6,9 +6,9 @@
                 <div class="card mb-0">
                     <div class="card-body">
                         <a href="#" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                            <img src="{{ asset('admin/assets/images/logos/logo.png') }}" width="180" alt="">
+                            <img src="{{ asset('img/icon/hienbook.png') }}" width="180" alt="">
                         </a>
-                        <p class="text-center">Bánh ngon mỗi ngày</p>
+                        <p class="text-center">BookShop</p>
                         <form action="{{ route('login') }}" method="POST">
                             @csrf
                             <div class="mb-3">

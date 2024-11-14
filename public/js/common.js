@@ -65,7 +65,6 @@ function handleImageUpload(input, image) {
         $(image).attr('src', URL.createObjectURL(input.files[0]));
     }
 }
-
 /**
  * debounce function
  * @param {Function} func callback function

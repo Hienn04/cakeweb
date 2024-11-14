@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class CartService
+class CartService 
 {
     public function handleAddToCart($request)
     {
@@ -83,6 +83,7 @@ class CartService
     {
         try {
             $user  = Auth::user();
+            // return 1;
             $cart = Cart::where('user_id', $user->id)->first();
 
             if (!$cart) {
@@ -103,14 +104,14 @@ class CartService
                 )
                 ->selectRaw('SUM(cart_items.quantity * products.price) as total')
                 ->groupBy('cart_items.cart_id', 'cart_items.quantity', 'products.quantity', 'products.id', 'products.name', 'products.price', 'products.image')
-                ->orderBy('cart_items.created_at', 'desc')
-                ->get();
+                // ->orderBy('cart_items.created_at', 'desc')
+                ->get();    
             $totalCarts = 0;
-            foreach ($cartItems as $item) {
-                if ($item->quantity <= $item->productQuantity) {
-                    $totalCarts += $item->total;
+                foreach ($cartItems as $item) {
+                    if ($item->quantity <= $item->productQuantity) {
+                        $totalCarts += $item->total;
+                    }
                 }
-            }
             return [
                 'cartItems' => $cartItems,
                 'totalCarts' => $totalCarts
@@ -168,7 +169,7 @@ class CartService
                 )
                 ->selectRaw('SUM(cart_items.quantity * products.price) as total')
                 ->groupBy('cart_items.cart_id', 'cart_items.quantity', 'products.quantity', 'products.id', 'products.name', 'products.price', 'products.image')
-                ->orderBy('cart_items.created_at', 'desc')
+               
                 ->get();
             foreach ($cartItemsInCheckout as $key => $item) {
                 if ($item->quantity > $item->productQuantity) {
@@ -193,7 +194,29 @@ class CartService
         }
     }
 
+/**
+     * Get total product in cart
+     * @return Number total product in cart
+     */
+    public function getTotalProductInCart()
+    {
+        try {
+            $user  = Auth::user();
+            $cart = Cart::where('user_id', $user->id)->first();
 
+            if (!$cart) {
+                $cart = new Cart();
+                $cart->user_id = $user->id;
+                $cart->save();
+            }
+
+            $totalProductInCart = CartItem::where('cart_id', $cart->id)->count();
+            return $totalProductInCart;
+        } catch (Exception $e) {
+            Log::error($e);
+            return response()->json($e, 500);
+        }
+    }
     /**
      * Remove products from cart
      * @param @request

@@ -1,212 +1,400 @@
 @extends('website.layouts.app')
 @section('content')
-    <!-- Hero Section Begin -->
-<section class="hero">
-    <div class="hero__slider owl-carousel">
-        <div class="hero__item set-bg" data-setbg="{{asset('img/hero/hero-1.jpg')}}">
+
+<div class="main-container col1-layout no-margin-top">
+    <div class="main">
+        <div class="margin-bottom: 5px;">
+            <div class="container" style="background-color : transparent!important;">
+            </div>
+        </div>
+        <div class="col-main">
             <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="hero__text">
-                            <h2>Bánh ngọt - lựa chọn của những tâm hồn lãng mạn</h2>
-                            {{-- <a href="#" class="primary-btn">Our cakes</a> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="hero__item set-bg" data-setbg="{{asset('img/hero/hero-1.jpg')}}">
-            <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="hero__text">
-                            <h2>Making your life sweeter one bite at a time!</h2>
-                            <a href="#" class="primary-btn">Our cakes</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                <div class="container-inner">
+                    <ul id="admin_messages"></ul>
+                    <style>
+                        .fhs-input-box .fhs-input-group.checked-error .fhs-textbox-alert,
+                        .fhs-input-box.checked-error .fhs-input-group .fhs-textbox-alert {
+                            background: url(Content/Home/imgs/ico_fail.png) no-repeat center center;
+                            -webkit-background-size: cover;
+                            -moz-background-size: cover;
+                            -o-background-size: cover;
+                            background-size: cover;
+                            height: 20px;
+                            width: 20px;
+                            display: inline-block;
+                        }
 
-<section class="about spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="about__text">
-                    <div class="section-title">
-                        <span>About Cake shop</span>
-                        <h2>Cakes and bakes from the house of Queens!</h2>
-                    </div>
-                    <p>The "Cake Shop" is a Jordanian Brand that started as a small family business. The owners are
-                    Dr. Iyad Sultan and Dr. Sereen Sharabati, supported by a staff of 80 employees.</p>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="about__bar">
-                    <div class="about__bar__item">
-                        <p>Cake design</p>
-                        <div id="bar1" class="barfiller">
-                            <div class="tipWrap"><span class="tip"></span></div>
-                            <span class="fill" data-percentage="95"></span>
+                        .fhs-input-box.checked-pass .fhs-input-group .fhs-textbox-alert {
+                            background: url(Content/Home/imgs/ico_fail.png/ico_success.html) no-repeat center center;
+                            -webkit-background-size: cover;
+                            -moz-background-size: cover;
+                            -o-background-size: cover;
+                            background-size: cover;
+                            height: 20px;
+                            width: 20px;
+                            display: inline-block;
+                        }
+
+                    </style>
+
+                    <div class="std">
+
+                        <div id="fhs-homebanner">
+                            <div class=" fhs-banner-image-block " style="">
+                                <div class="col-sm-3 col-md-3 col-xs-6 block-item no-padding hidden-xs">
+                                    <div class="banner-home-inner">
+                                        <a class="cursor-pointer" href="sach-moi-phat-hanh.html" target="_parent">
+                                            <img src="./UserFiles/files/S%c3%a1ch%20s%e1%ba%afp%20ph%c3%a1t%20h%c3%a0nh%20(1).jpg" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-xs-6 block-item no-padding hidden-xs">
+                                    <div class="banner-home-inner">
+                                        <a class="cursor-pointer" href="#" target="_parent">
+                                            <img src="./UserFiles/files/S%c3%a1ch%20Hot%20(1).png" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-xs-6 block-item no-padding hidden-xs">
+                                    <div class="banner-home-inner">
+                                        <a class="cursor-pointer" href="#" target="_parent">
+                                            <img src="./UserFiles/files/S%c3%a1ch%20s%e1%ba%afp%20ph%c3%a1t%20h%c3%a0nh.png" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-xs-6 block-item no-padding hidden-xs no-margin-right-important">
+                                    <div class="banner-home-inner ">
+                                        <a class="cursor-pointer" href="#" target="_parent">
+                                            <img src="./UserFiles/files/2510.jpg" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="about__bar__item">
-                        <p>Cake Class</p>
-                        <div id="bar2" class="barfiller">
-                            <div class="tipWrap"><span class="tip"></span></div>
-                            <span class="fill" data-percentage="80"></span>
+
+
+                        <div class="desktop_only" style="width: 100%;">
+                            <div class="fhs_block" style="margin-top: 24px;">
+                                <div class="fhs_block_head fhs_center_left"><span class="ico_menu_red" style="margin-right: 8px;"></span><span class="fhs_block_head_title">Danh mục Sách</span></div>
+                                <div class="fhs_block_line">
+                                    <div></div>
+                                </div>
+                                <div class="fhs_block_head">
+                                    <div class="menu_category_block_content_list" style="display: grid;grid-template-columns: repeat(10, 1fr);">
+                                        @foreach($listCate as $C)
+
+                                        <a href="{{route('website.product.productCate',$C->id)}}" title="{{$C->name}}" class="fhs_column_center">
+                                            <img style="width:110px;height:145px;" alt="{{$C->name}}" class="lazyloaded" src="{{ Storage::url($C->image) }}" data-src="{{ Storage::url($C->image) }}" />
+                                            <div class="fhs_nowrap_two fhs_center_center" style="margin-top: 16px; font-size: 1.15em;">
+                                                {{$C->name}}</div>
+                                        </a>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="about__bar__item">
-                        <p>Cake Recipes</p>
-                        <div id="bar3" class="barfiller">
-                            <div class="tipWrap"><span class="tip"></span></div>
-                            <span class="fill" data-percentage="90"></span>
+
+
+
+                        <link rel="stylesheet" type="text/css" href="./Content/Home/css/topvote.css" media="all" />
+                        <div class="block-vote">
+                            <div style="background-image: url('./Content/Home/imgs/banner_vote.png');" class="header-vote">
+                                <div class="header-icon-gridslider">
+                                    <img src="./Content/Home/imgs/ico_dealhot.png" class="center">
+                                    Sách bán chạy trong tuần <div class="fhs_blockimagecategory_icon_arrow"></div>
+                                </div>
+
+                            </div>
+                            <div class="tab-content">
+                                <div id="block-fhs-vote" style="padding:15px;">
+                                    <div class="fhs-product-slider-content">
+                                        <div class="swiper-container swiper-container-horizontal">
+                                            <ul class="fhs-product-slider-list">
+                                            @foreach ($product as $p)
+                                                <li class="fhs_product_basic swiper-slide flashsale-item swiper-slide-active">
+                                                    <div class="item-inner">
+                                                        <div class="ma-box-content">
+                                                            <div class="products clear">
+                                                                <div class="product images-container">
+                                                                    <a href="{{ route('website.product.detail',$p->id) }}" title="{{$p->name}}" class="product-image">
+                                                                        <div class="product-image">
+                                                                            <img alt="{{$p->name}}" class="lazyloaded" src="{{ Storage::url($p->image) }}" />
+
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <h2 class="product-name-no-ellipsis">
+                                                                    <a href="{{ route('website.product.detail',$p->id) }}" 
+                                                                    title="{{$p->name}}">{{$p->name}}</a>
+                                                                </h2>
+                                                                <div style="" class="author">Little
+                                                                    Angel</div>
+                                                                <div class="price-label">
+                                                                    <p class="special-price">
+                                                                        <span class="price m-price-font fhs_center_left">{{$p->price}}
+                                                                            đ <span class="discount-percent fhs_center_left">-20%</span></span>
+                                                                    </p>
+                                                                    <p class="old-price">
+                                                                        <span class="price">35.000
+                                                                            đ</span>
+                                                                    </p>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                            </ul>
+                                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+
+                        <div class="fs_bg">
+                            <div id="flashsale-slider" style="display: block; margin: 32px 0px; position: relative; z-index: 1;">
+                                <div class="block-vote">
+                                    <div style="border-bottom: 1px solid #F2F4F5;" class="header-vote">
+                                        <div class="header-icon-gridslider" style="color: #000;">
+                                            <i class="ico_sachtrongnuoc" style="margin-right:10px;"></i> <a href="sach-moi-phat-hanh.html">Sách Mới Phát
+                                                Hành</a>
+                                            <div class="fhs_blockimagecategory_icon_arrow"></div>
+                                        </div>
+
+                                    </div>
+                                    <div class="tab-content">
+                                        <div id="block-fhs-vote" style="padding:15px;">
+                                            <div class="fhs-product-slider-content">
+                                                <div class="swiper-container swiper-container-horizontal">
+                                                    <ul class="fhs-product-slider-list">
+                                                    @foreach($newbooks as $book)
+                                                        <li class="fhs_product_basic swiper-slide flashsale-item swiper-slide-active">
+                                                            <div class="item-inner">
+                                                                <div class="ma-box-content">
+                                                                    <div class="products clear">
+                                                                        <div class="product images-container">
+                                                                            <a href="{{ route('website.product.detail',$book->id) }}" title="{{$book->name}}" class="product-image">
+                                                                                <div class="product-image">
+                                                                                    <img alt="{{$book->name}}" class="lazyloaded" src="{{ Storage::url($book->image) }}" />
+
+                                                                                </div>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <h2 class="product-name-no-ellipsis">
+                                                                            <a href="{{ route('website.product.detail',$book->id) }}" title="{{$book->name}}">
+                                                                                </a>
+                                                                        </h2>
+                                                                        <div style="" class="author">name author</div>
+                                                                        <div class="price-label">
+                                                                            <p class="special-price">
+                                                                                <span class="price m-price-font fhs_center_left">{{$book->price}}
+                                                                                    đ <span class="discount-percent fhs_center_left">-25%</span></span>
+                                                                            </p>
+                                                                            <p class="old-price">
+                                                                                <span class="price">240.000
+                                                                                    đ</span>
+                                                                            </p>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    @endforeach
+                                                    </ul>
+                                                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                                                </div>
+                                                <div class="tabs-xem-them xem-them-item-aaa">
+                                                    <a href="{{route("website.product.index")}}">Xem thêm</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fs_bg_2"></div>
+                        </div>
+
+
+                        <div class="block-vote">
+                            <div style="border-bottom: 1px solid #F2F4F5;" class="header-vote">
+                                <div class="header-icon-gridslider" style="color: #000;">
+                                    <i class="ico_sachtrongnuoc" style="margin-right:10px;"></i><a href="danh-muc-sach/sach-van-hoc-1628.html"> S&#225;ch Văn
+                                        Học </a>
+                                    <div class="fhs_blockimagecategory_icon_arrow"></div>
+                                </div>
+                            </div>
+                            <div class="tab-content">
+                                <div id="block-fhs-vote" style="padding:15px;">
+                                    <div class="fhs-product-slider-content">
+                                        <div class="swiper-container swiper-container-horizontal">
+                                            <ul class="fhs-product-slider-list">
+                                            @foreach($vanhoc as $v)
+                                                <li class="fhs_product_basic swiper-slide flashsale-item swiper-slide-active">
+                                                    <div class="item-inner">
+                                                        <div class="ma-box-content">
+                                                            <div class="products clear">
+                                                                <div class="product images-container">
+                                                                    <a href="{{ route('website.product.detail',$v->id) }}" title="{{$v->name}}" class="product-image">
+                                                                        <div class="product-image">
+                                                                            <img alt="{{$v->name}}" class="lazyloaded" src="{{ Storage::url($book->image) }}" />
+
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <h2 class="product-name-no-ellipsis">
+                                                                    <a href="{{ route('website.product.detail',$v->id) }}" title="{{$v->name}}">{{$v->name}}</a>
+                                                                </h2>
+                                                                <div style="" class="author">Hồng
+                                                                    Ứng Minh (Thời...</div>
+                                                                <div class="price-label">
+                                                                    <p class="special-price">
+                                                                        <span class="price m-price-font fhs_center_left">{{$v->price}}
+                                                                            đ <span class="discount-percent fhs_center_left">-25%</span></span>
+                                                                    </p>
+                                                                    <p class="old-price">
+                                                                        <span class="price">105.000
+                                                                            đ</span>
+                                                                    </p>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endforeach  
+                                            </ul>
+                                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                                        </div>
+                                        <div class="tabs-xem-them xem-them-item-aaa">
+                                            <a href="{{route("website.product.index")}}">Xem
+                                                thêm</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-vote">
+                            <div style="border-bottom: 1px solid #F2F4F5;" class="header-vote">
+                                <div class="header-icon-gridslider" style="color: #000;">
+                                    <i class="ico_sachtrongnuoc" style="margin-right:10px;"></i><a href="danh-muc-sach/sach-thieu-nhi-1636.html"> S&#225;ch
+                                        Thiếu Nhi </a>
+                                    <div class="fhs_blockimagecategory_icon_arrow"></div>
+                                </div>
+                            </div>
+                            <div class="tab-content">
+                                <div id="block-fhs-vote" style="padding:15px;">
+                                    <div class="fhs-product-slider-content">
+                                        <div class="swiper-container swiper-container-horizontal">
+                                            <ul class="fhs-product-slider-list">
+                                            @foreach( $thieunhi as $t )
+                                                <li class="fhs_product_basic swiper-slide flashsale-item swiper-slide-active">
+                                                    <div class="item-inner">
+                                                        <div class="ma-box-content">
+                                                            <div class="products clear">
+                                                                <div class="product images-container">
+                                                                    <a href="{{ route('website.product.detail',$t->id) }}" title="{{$t->name}}" class="product-image">
+                                                                        <div class="product-image">
+                                                                            <img alt="{{$t->name}}" class="lazyloaded" src="{{ Storage::url($t->image) }}" />
+
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <h2 class="product-name-no-ellipsis">
+                                                                    <a href="{{ route('website.product.detail',$t->id) }}" title="{{$t->name}})">{{$t->name}}</a>
+                                                                </h2>
+                                                                <div style="" class="author">Hải Yến
+                                                                </div>
+                                                                <div class="price-label">
+                                                                    <p class="special-price">
+                                                                        <span class="price m-price-font fhs_center_left">{{$t->price}}
+                                                                            đ <span class="discount-percent fhs_center_left">-25%</span></span>
+                                                                    </p>
+                                                                    <p class="old-price">
+                                                                        <span class="price">70.000
+                                                                            đ</span>
+                                                                    </p>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                            </ul>
+                                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                                        </div>
+                                        <div class="tabs-xem-them xem-them-item-aaa">
+                                            <a href="{{route("website.product.index")}}">Xem
+                                                thêm</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+        <script type="text/javascript">
+            new Swiper('.cms-horizontal-slider .swiper-container', {
+                slidesPerView: 9
+                , slidesPerGroup: 9
+                , spaceBetween: 20
+                , preloadImages: false
+                , lazy: true
+                , navigation: {
+                    nextEl: '.swiper-button-next'
+                    , prevEl: '.swiper-button-prev'
+                , }
+                , longSwipesMs: 800
+            , });
 
-<!-- Product Section Begin -->
-<section class="product spad">
-    <div class="container">
-        <div class="row">
-            @foreach ($product as $item )
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="{{ Storage::url($item->image) }}">
-                        <div class="product__label">
-                            <span>{{ $item->categoryName }}</span>
-                        </div>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a href="#">{{ $item->name }}</a></h6>
-                        <div class="product__item__price">{{ $item->price }}</div>
-                        <div class="cart_add">
-                            <button data-product-id="{{ $item->id }}" class="btn addToCart" >Thêm vào giỏ hàng</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-            
-            
-        </div>
+        </script>
     </div>
-</section>
-<!-- Product Section End -->
+</div>
 
-<section class="instagram spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 p-0">
-                <div class="instagram__text">
-                    <div class="section-title">
-                        <span>Follow us on instagram</span>
-                        <h2>Sweet moments are saved as memories.</h2>
-                    </div>
-                    <h5><i class="fa fa-instagram"></i> @sweetcake</h5>
-                </div>
-            </div>
-            <div class="col-lg-8">
+
+<div class="ma-block-link-follow">
+    <div class="block-link-follow hidden-xs">
+        <div class="container">
+            <div class="container-inner">
                 <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-6">
-                        <div class="instagram__pic">
-                            <img src="img/instagram/instagram-1.jpg" alt="">
+                    <div class="f-col f-col-2 col-sm-8 col-md-12 col-sms-12">
+                        <div class="block-subscribe" style="text-align: center;">
+                            <div style="display: inline-block;">
+
+
+                            </div>
+                            <script type="text/javascript">
+                                //<![CDATA[
+                                var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+                                //]]>
+
+                            </script>
                         </div>
+
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-6">
-                        <div class="instagram__pic middle__pic">
-                            <img src="img/instagram/instagram-2.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-6">
-                        <div class="instagram__pic">
-                            <img src="img/instagram/instagram-3.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-6">
-                        <div class="instagram__pic">
-                            <img src="img/instagram/instagram-4.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-6">
-                        <div class="instagram__pic middle__pic">
-                            <img src="img/instagram/instagram-5.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-6">
-                        <div class="instagram__pic">
-                            <img src="img/instagram/instagram-3.jpg" alt="">
-                        </div>
+                    <div class="f-col f-col-1 col-sm-4 col-md-4 col-sms-12">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-
-
-
-
-
-
-
-@endsection
-@section('web-script')
-    <script>
-        function addToCart(productId, quantity, btn) {
-            $.ajax({
-                type: "POST",
-                url: "{{ route('cart.add') }}",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data: {
-                    productId: productId,
-                    quantity: quantity,
-                }
-            }).done(function(res) {
-                const data = res.data.original;
-                if (data.success) {
-                    notiSuccess(data.success, 'center');
-                    getTotalProductInCart();
-                } else if (data.error) {
-                    notiError(data.error);
-                }
-            }).fail(function(xhr) {
-                if (xhr.status === 401) {
-                    window.location.href = "/login";
-                } else if (xhr.status === 400 && xhr.responseJSON.errors) {
-                    const errorMessages = xhr.responseJSON.errors;
-                    for (let fieldName in errorMessages) {
-                        notiError(errorMessages[fieldName][0]);
-                    }
-                } else {
-                    notiError();
-                }
-            }).always(function() {
-                btn.prop('disabled', false);
-            })
-        }
-
-       
-        
-        $(document).ready(function() {
-            // Add to cart
-            $(document).on('click', '.addToCart', function() {
-                $(this).prop('disabled', true);
-                const productId = $(this).data('product-id');
-                addToCart(productId, 1, $(this));
-                searchProductMenu();
-            });
-
-
-        })
-    </script>
+</div>
 @endsection

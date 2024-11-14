@@ -36,6 +36,7 @@ class PostController extends Controller
     public function search(Request $request)
     {
         $data = $this->postService->searchPost($request->searchName, $request->paginate, $request->status);
+        // dump($data);
         return view('website.post.listPost', compact('data'));
     }
 

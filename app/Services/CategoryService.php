@@ -7,7 +7,7 @@ use App\Models\Category;
 use Exception;
 use Illuminate\Support\Facades\Log;
 
-class CategoryService
+class CategoryService extends BaseService
 {
     public function getCategories()
     {
@@ -37,9 +37,12 @@ class CategoryService
     public function createCategory($request)
     {
         try {
+            $uploadImage = $this->uploadFile($request->file('image'), 'categories');
 
             $category = [
                 'name' => $request->name,
+                'image' => $uploadImage,
+
             ];
            
 
@@ -55,8 +58,14 @@ class CategoryService
     {
         try {
             $data = Category::findOrFail($request->categoryId);
+            if (!empty($request->file('image'))) {
+                $this->deleteFile($data->image);
+                $uploadImage = $this->uploadFile($request->file('image'), 'categories');
+            }
             $category = [
                 'name' => $request->name,
+                'image' => $uploadImage,
+
             ];
 
             $data = $data->update($category);

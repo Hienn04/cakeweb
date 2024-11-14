@@ -59,15 +59,15 @@ class BaseService
      * @param $icon
      * @return path icon file
      */
-    public function uploadIcon($icon, $newFolder = null)
+    public function uploadIcon($image, $newFolder = null)
     {
         try {
-            $iconName = $icon->getClientOriginalName();
+            $iconName = $image->getClientOriginalName();
             $filename = explode('.', $iconName)[0];
-            $extension = $icon->getClientOriginalExtension();
+            $extension = $image->getClientOriginalExtension();
             $iconName =  Str::slug(time() . "_" . $filename, "_") . "." . $extension;
             $folder = $newFolder ? 'uploads/' . $newFolder : 'uploads';
-            $path = $icon->storeAs($folder, $iconName, 'public');
+            $path = $image->storeAs($folder, $iconName, 'public');
             return $path;
         } catch (Exception $e) {
             Log::error($e);
@@ -87,9 +87,7 @@ class BaseService
             throw $e;
         }
     }
-    /**
-     * Hàm tạo 1 đoạn chữ số ngẫu nhiên
-     */
+   
     public function generateRandomCode($length = 10)
     {
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
