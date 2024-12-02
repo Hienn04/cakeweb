@@ -29,12 +29,22 @@
                                 </div>
                                 <div class="price-label">
                                     <p class="special-price">
-                                        <span class="price m-price-font fhs_center_left">{{ $item->price }}
-                                            đ <span class="discount-percent fhs_center_left">-25%</span></span>
+                                        @if($item->sale)
+                                        <span class="price m-price-font fhs_center_left">
+                                            {{ number_format($item->sale, 0, ',', '.') }} đ
+                                            <span class="discount-percent fhs_center_left"><img style="width:15px;" src="./img/bolt.png"></span>
+                                        </span>
+                                        <p class="old-price">
+                                            <span class="price">{{ $item->price ? number_format($item->price, 0, ',', '.') . ' đ' : '' }}
+                                            </span>
+                                        </p>
                                     </p>
-                                    <p class="old-price">
-                                        <span class="price">82.000 đ</span>
+                                    @else
+                                    <p class="text-xl">
+                                        <span class="price" style="font-size: x-large;color: #888888;">{{ $item->price ? number_format($item->price, 0, ',', '.') . ' đ' : '' }}
+                                        </span>
                                     </p>
+                                    @endif
                                 </div>
                             </div>
                         </div>

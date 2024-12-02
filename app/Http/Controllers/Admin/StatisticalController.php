@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -9,12 +10,31 @@ use App\Http\Controllers\Controller;
 class StatisticalController extends Controller
 {
     //
-    public function index() {
-          
-        return view('admin.statistical');
+    public function index()
+    {
+        // Đếm số lượng sản phẩm
+        $countProducts = Product::count();
+
+        // Số lượng sản phẩm hết hàng 
+        $outOfstock = Product::select('name')->where('quantity', 0)->get();
+        // return $outOfstock;
+
+        $bestSeller = DB::table('order_items')
+            ->join('products', 'order_items.product_id', '=', 'products.id')
+            ->select('products.name', 'order_items.product_id', DB::raw('COUNT(*) as frequency'))
+            ->groupBy('order_items.product_id', 'products.name')
+            ->orderByDesc('frequency')
+            ->take(5)->get();
+
+        // return $bestSeller;
+
+
+        return view('admin.statistical', [
+            'countProducts' => $countProducts,
+            'outOfstock' => $outOfstock,
+            'bestSeller' => $bestSeller,
+        ]);
     }
-
-
     public function getProfit()
     {
         $results = DB::table('book.order_items as o')
@@ -40,8 +60,8 @@ class StatisticalController extends Controller
                 'revenue' => $revenue,
                 'profit' => $profit,
             ];
-        }   
-            // dd($jsonArray);
+        }
+        // dd($jsonArray);
         return response()->json($jsonArray);
     }
 }

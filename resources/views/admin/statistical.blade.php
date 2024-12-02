@@ -67,7 +67,7 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div class="chart">
                             <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                         </div>
@@ -93,12 +93,81 @@
         </div>
         <!-- /.card -->
 
+        <div class="card ">
+            <h3 class="card-title p-3">Trong kho: {{$countProducts}}</h3>
+            <div class="card-header">
+                <h3 class="card-title">Trong kho</h3>
+                <div class="alert alert-danger mx-auto" role="alert"></div>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                       <h3 class="card-title p-3 alert alert-danger mx-auto">Thống kê sản phẩm hết hàng</h3>
+
+                    <div class="col-md-12">
+                        <table class="table-auto border-collapse border border-gray-300 w-full text-sm mb-10">
+                            <thead>
+                                <tr class="bg-gray-100 text-left">
+                                    <th class="border border-gray-300 px-4 py-2">STT</th>
+                                    <th class="border border-gray-300 px-4 py-2">Tên sản phẩm hết hàng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($outOfstock as $index => $item)
+                                <tr>
+                                    <td class="border border-gray-300 px-4 py-2">{{ $index + 1 }}</td>
+                                    <td class="border border-gray-300 px-4 py-2">{{ $item['name'] }}</td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="2" class="border border-gray-300 px-4 py-2 text-center">Không có dữ liệu</td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                       <h3 class="card-title p-3 alert alert-success mx-auto mt-10">Thống kê sản phẩm bán chạy</h3>
+                    <div class="col-md-12">
+                        <table class="table-auto border-collapse border border-gray-300 w-full text-sm">
+                            <thead>
+                                <tr class="bg-gray-100 text-left">
+                                    <th class="border border-gray-300 px-4 py-2">STT</th>
+                                    <th class="border border-gray-300 px-4 py-2">Tên sản phẩm</th>
+                                    {{-- <th class="border border-gray-300 px-4 py-2">ID sản phẩm</th> --}}
+                                    <th class="border border-gray-300 px-4 py-2">Số lượt mua</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($bestSeller as $index => $item)
+                                <tr>
+                                    <td class="border border-gray-300 px-4 py-2">{{ $index + 1 }}</td>
+                                    <td class="border border-gray-300 px-4 py-2">{{ $item->name }}</td>
+                                    {{-- <td class="border border-gray-300 px-4 py-2">{{ $item->product_id }}</td> --}}
+                                    <td class="border border-gray-300 px-4 py-2">{{ $item->frequency }}</td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="4" class="border border-gray-300 px-4 py-2 text-center">
+                                        Không có dữ liệu
+                                    </td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>
-
-
-
-
-
 
     <script src="../import_js/moment/moment.min.js"></script>
     <script src="../import_js/chart.js/Chart.min.js"></script>
@@ -203,12 +272,13 @@
                 }
                 , loadTableData() {
                     var strHtml = "";
+                    const formatVND = new Intl.NumberFormat('vi-VN'); 
                     this.arrDate.forEach((date, i) => {
                         strHtml += "<tr>";
                         strHtml += "<td>" + (i + 1) + "</td>";
                         strHtml += "<td>" + date + "</td>";
-                        strHtml += "<td>" + this.arrDoanhThu[i].toFixed(3) + "đ" + "</td>";
-                        strHtml += "<td>" + this.arrLoiNhuan[i].toFixed(3) + "đ" + "</td>";
+                        strHtml += "<td>" + formatVND.format(this.arrDoanhThu[i]) + "đ" + "</td>";
+                        strHtml += "<td>" + formatVND.format(this.arrLoiNhuan[i]) + "đ" + "</td>";
                         strHtml += "</tr>";
                     });
                     document.getElementById('load_data').innerHTML = strHtml;

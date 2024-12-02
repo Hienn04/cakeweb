@@ -22,6 +22,10 @@
                             <label for="productPrice" class="form-label">Giá bán<span class="text-danger">*</span></label>
                             <input type="number" class="form-control" id="productPrice" name="price">
                         </div>
+                        <div class="col-md-2">
+                            <label for="productPrice" class="form-label">sale<span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="productPrice" name="price">
+                        </div>
 
                     </div>
                     <div class="mb-4">

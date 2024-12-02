@@ -110,7 +110,7 @@
                                     <div class="fhs-product-slider-content">
                                         <div class="swiper-container swiper-container-horizontal">
                                             <ul class="fhs-product-slider-list">
-                                            @foreach ($product as $p)
+                                                @foreach ($product as $p)
                                                 <li class="fhs_product_basic swiper-slide flashsale-item swiper-slide-active">
                                                     <div class="item-inner">
                                                         <div class="ma-box-content">
@@ -126,27 +126,34 @@
                                                             </div>
                                                             <div>
                                                                 <h2 class="product-name-no-ellipsis">
-                                                                    <a href="{{ route('website.product.detail',$p->id) }}" 
-                                                                    title="{{$p->name}}">{{$p->name}}</a>
+                                                                    <a href="{{ route('website.product.detail',$p->id) }}" title="{{$p->name}}">{{$p->name}}</a>
                                                                 </h2>
-                                                                <div style="" class="author">Little
-                                                                    Angel</div>
+                                                                <div style="" class="author">{{$p->author}}</div>
                                                                 <div class="price-label">
                                                                     <p class="special-price">
-                                                                        <span class="price m-price-font fhs_center_left">{{$p->price}}
-                                                                            đ <span class="discount-percent fhs_center_left">-20%</span></span>
+                                                                        @if($p->sale)
+                                                                        <span class="price m-price-font fhs_center_left">
+                                                                            {{ number_format($p->sale, 0, ',', '.') }} đ
+                                                                            <span class="discount-percent fhs_center_left"><img style="width:15px;" src="./img/bolt.png"></span>
+                                                                        </span>
+                                                                        <p class="old-price">
+                                                                            <span class="price">{{ $p->price ? number_format($p->price, 0, ',', '.') . ' đ' : '' }}
+                                                                            </span>
+                                                                        </p>
                                                                     </p>
-                                                                    <p class="old-price">
-                                                                        <span class="price">35.000
-                                                                            đ</span>
+                                                                    @else
+                                                                    <p class="text-xl">
+                                                                        <span class="price" style="font-size: x-large;color: #888888;">{{ $p->price ? number_format($p->price, 0, ',', '.') . ' đ' : '' }}
+                                                                        </span>
                                                                     </p>
+                                                                    @endif
                                                                 </div>
 
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </li>
-                                            @endforeach
+                                                @endforeach
                                             </ul>
                                             <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                                         </div>
@@ -161,7 +168,7 @@
                                 <div class="block-vote">
                                     <div style="border-bottom: 1px solid #F2F4F5;" class="header-vote">
                                         <div class="header-icon-gridslider" style="color: #000;">
-                                            <i class="ico_sachtrongnuoc" style="margin-right:10px;"></i> <a href="sach-moi-phat-hanh.html">Sách Mới Phát
+                                            <i class="ico_sachtrongnuoc" style="margin-right:10px;"></i> <a href="/">Sách Mới Phát
                                                 Hành</a>
                                             <div class="fhs_blockimagecategory_icon_arrow"></div>
                                         </div>
@@ -172,7 +179,7 @@
                                             <div class="fhs-product-slider-content">
                                                 <div class="swiper-container swiper-container-horizontal">
                                                     <ul class="fhs-product-slider-list">
-                                                    @foreach($newbooks as $book)
+                                                        @foreach($newbooks as $book)
                                                         <li class="fhs_product_basic swiper-slide flashsale-item swiper-slide-active">
                                                             <div class="item-inner">
                                                                 <div class="ma-box-content">
@@ -188,26 +195,35 @@
                                                                     </div>
                                                                     <div>
                                                                         <h2 class="product-name-no-ellipsis">
-                                                                            <a href="{{ route('website.product.detail',$book->id) }}" title="{{$book->name}}">
-                                                                                </a>
+                                                                            <a href="{{ route('website.product.detail',$book->id) }}" title="{{$book->name}}">{{$book->name}}
+                                                                            </a>
                                                                         </h2>
-                                                                        <div style="" class="author">name author</div>
-                                                                        <div class="price-label">
+                                                                        <div style="" class="author">{{ $book->author ?? 'No data' }}</div>
+                                                                        <div class="price-label cursor-pointer">
                                                                             <p class="special-price">
-                                                                                <span class="price m-price-font fhs_center_left">{{$book->price}}
-                                                                                    đ <span class="discount-percent fhs_center_left">-25%</span></span>
+                                                                                @if($book->sale)
+                                                                                <span class="price m-price-font fhs_center_left">
+                                                                                    {{ number_format($book->sale, 0, ',', '.') }} đ
+                                                                                    <span class="discount-percent fhs_center_left"><img style="width:15px;" src="./img/bolt.png"></span>
+                                                                                </span>
+                                                                                <p class="old-price">
+                                                                                    <span class="price">{{ $book->price ? number_format($book->price, 0, ',', '.') . ' đ' : '' }}
+                                                                                    </span>
+                                                                                </p>
                                                                             </p>
-                                                                            <p class="old-price">
-                                                                                <span class="price">240.000
-                                                                                    đ</span>
+                                                                            @else
+                                                                            <p class="text-xl">
+                                                                                <span class="price" style="font-size: x-large;color: #888888;">{{ $book->price ? number_format($book->price, 0, ',', '.') . ' đ' : '' }}
+                                                                                </span>
                                                                             </p>
+                                                                            @endif
                                                                         </div>
 
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </li>
-                                                    @endforeach
+                                                        @endforeach
                                                     </ul>
                                                     <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                                                 </div>
@@ -226,7 +242,7 @@
                         <div class="block-vote">
                             <div style="border-bottom: 1px solid #F2F4F5;" class="header-vote">
                                 <div class="header-icon-gridslider" style="color: #000;">
-                                    <i class="ico_sachtrongnuoc" style="margin-right:10px;"></i><a href="danh-muc-sach/sach-van-hoc-1628.html"> S&#225;ch Văn
+                                    <i class="ico_sachtrongnuoc" style="margin-right:10px;"></i><a href="/products/listCate/1"> Sách Văn
                                         Học </a>
                                     <div class="fhs_blockimagecategory_icon_arrow"></div>
                                 </div>
@@ -236,7 +252,7 @@
                                     <div class="fhs-product-slider-content">
                                         <div class="swiper-container swiper-container-horizontal">
                                             <ul class="fhs-product-slider-list">
-                                            @foreach($vanhoc as $v)
+                                                @foreach($vanhoc as $v)
                                                 <li class="fhs_product_basic swiper-slide flashsale-item swiper-slide-active">
                                                     <div class="item-inner">
                                                         <div class="ma-box-content">
@@ -254,24 +270,32 @@
                                                                 <h2 class="product-name-no-ellipsis">
                                                                     <a href="{{ route('website.product.detail',$v->id) }}" title="{{$v->name}}">{{$v->name}}</a>
                                                                 </h2>
-                                                                <div style="" class="author">Hồng
-                                                                    Ứng Minh (Thời...</div>
+                                                                <div style="" class="author">{{$v->author}}</div>
                                                                 <div class="price-label">
                                                                     <p class="special-price">
-                                                                        <span class="price m-price-font fhs_center_left">{{$v->price}}
-                                                                            đ <span class="discount-percent fhs_center_left">-25%</span></span>
+                                                                        @if($v->sale)
+                                                                        <span class="price m-price-font fhs_center_left">
+                                                                            {{ number_format($v->sale, 0, ',', '.') }} đ
+                                                                            <span class="discount-percent fhs_center_left"><img style="width:15px;" src="./img/bolt.png"></span>
+                                                                        </span>
+                                                                        <p class="old-price">
+                                                                            <span class="price">{{ $v->price ? number_format($v->price, 0, ',', '.') . ' đ' : '' }}
+                                                                            </span>
+                                                                        </p>
                                                                     </p>
-                                                                    <p class="old-price">
-                                                                        <span class="price">105.000
-                                                                            đ</span>
+                                                                    @else
+                                                                    <p class="text-xl">
+                                                                        <span class="price" style="font-size: x-large;color: #888888;">{{ $p->price ? number_format($p->price, 0, ',', '.') . ' đ' : '' }}
+                                                                        </span>
                                                                     </p>
+                                                                    @endif
                                                                 </div>
 
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </li>
-                                            @endforeach  
+                                                @endforeach
                                             </ul>
                                             <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                                         </div>
@@ -286,7 +310,7 @@
                         <div class="block-vote">
                             <div style="border-bottom: 1px solid #F2F4F5;" class="header-vote">
                                 <div class="header-icon-gridslider" style="color: #000;">
-                                    <i class="ico_sachtrongnuoc" style="margin-right:10px;"></i><a href="danh-muc-sach/sach-thieu-nhi-1636.html"> S&#225;ch
+                                    <i class="ico_sachtrongnuoc" style="margin-right:10px;"></i><a href="/products/listCate/2"> Sách
                                         Thiếu Nhi </a>
                                     <div class="fhs_blockimagecategory_icon_arrow"></div>
                                 </div>
@@ -296,7 +320,7 @@
                                     <div class="fhs-product-slider-content">
                                         <div class="swiper-container swiper-container-horizontal">
                                             <ul class="fhs-product-slider-list">
-                                            @foreach( $thieunhi as $t )
+                                                @foreach( $thieunhi as $t )
                                                 <li class="fhs_product_basic swiper-slide flashsale-item swiper-slide-active">
                                                     <div class="item-inner">
                                                         <div class="ma-box-content">
@@ -314,24 +338,33 @@
                                                                 <h2 class="product-name-no-ellipsis">
                                                                     <a href="{{ route('website.product.detail',$t->id) }}" title="{{$t->name}})">{{$t->name}}</a>
                                                                 </h2>
-                                                                <div style="" class="author">Hải Yến
+                                                                <div style="" class="author">{{$t->author}}
                                                                 </div>
                                                                 <div class="price-label">
                                                                     <p class="special-price">
-                                                                        <span class="price m-price-font fhs_center_left">{{$t->price}}
-                                                                            đ <span class="discount-percent fhs_center_left">-25%</span></span>
+                                                                        @if($p->sale)
+                                                                        <span class="price m-price-font fhs_center_left">
+                                                                            {{ number_format($p->sale, 0, ',', '.') }} đ
+                                                                            <span class="discount-percent fhs_center_left"><img style="width:15px;" src="{{asset('/img/bolt.png')}}"></span>
+                                                                        </span>
+                                                                        <p class="old-price">
+                                                                            <span class="price">{{ $p->price ? number_format($p->price, 0, ',', '.') . ' đ' : '' }}
+                                                                            </span>
+                                                                        </p>
                                                                     </p>
-                                                                    <p class="old-price">
-                                                                        <span class="price">70.000
-                                                                            đ</span>
+                                                                    @else
+                                                                    <p class="text-xl">
+                                                                        <span class="price" style="font-size: x-large;color: #888888;">{{ $p->price ? number_format($p->price, 0, ',', '.') . ' đ' : '' }}
+                                                                        </span>
                                                                     </p>
+                                                                    @endif
                                                                 </div>
 
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </li>
-                                            @endforeach
+                                                @endforeach
                                             </ul>
                                             <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                                         </div>

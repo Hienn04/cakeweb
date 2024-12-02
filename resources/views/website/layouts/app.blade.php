@@ -12,10 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="mobile-web-app-capable" content="yes">
+   
     <link rel="icon" href="#" type="image/x-icon" />
-    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('img/icon/hienbook.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/sweetalert.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/assets/css/common.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/assets/css/lightbox.css') }}" />

@@ -29,9 +29,9 @@ use App\Http\Controllers\Admin\ProductController as AdminProductController;
 |
 */
 // router danh cho guest
-Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/about',[HomeController::class, 'about'])->name('about');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
 
 Route::prefix('contacts')->group(function () {
     Route::get('/', [ContactController::class, 'showContact'])->name('website.contact.index');
@@ -41,9 +41,9 @@ Route::prefix('contacts')->group(function () {
 Route::prefix('products')->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('website.product.index');
     Route::post('/search', [ProductController::class, 'search'])->name('website.product.search');
+    Route::post('/searchProducts', [ProductController::class, 'searchProducts'])->name('website.searchProducts.search');
     Route::get('/listCate/{id}', [ProductController::class, 'listCate'])->name('website.product.productCate');
     Route::get('/details/{id}', [ProductController::class, 'details'])->name('website.product.detail');
-
 });
 
 
@@ -108,7 +108,6 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
         Route::get('/{id}', [AdminOrderController::class, 'details'])->name('admin.order.details');
         Route::post('/search', [AdminOrderController::class, 'searchDetails'])->name('admin.order.searchDetails');
     });
-
 });
 
 // Route For User
@@ -122,8 +121,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/', [CartController::class, 'search'])->name('cart.search');
         Route::post('/searchLimit', [CartController::class, 'searchLimit'])->name('cart.searchLimit');
         Route::post('/add_to_cart', [CartController::class, 'addToCart'])->name('cart.add');
-        Route::post('/update_cart', [CartController::class, 'updateCart'])->name('cart.update');
         Route::post('/getTotalProductInCart', [CartController::class, 'getTotalProductInCart'])->name('cart.getTotalProductInCart');
+        Route::post('/update_cart', [CartController::class, 'updateCart'])->name('cart.update');
         Route::delete('/remove', [CartController::class, 'removeProduct'])->name('cart.remove');
     });
 
